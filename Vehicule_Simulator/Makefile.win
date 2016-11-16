@@ -1,0 +1,40 @@
+# Project: Vehicule_Simulator
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = obj/main.o obj/Entity.o obj/Vector.o obj/Road.o obj/Vehicule.o
+LINKOBJ  = obj/main.o obj/Entity.o obj/Vector.o obj/Road.o obj/Vehicule.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -L"C:/Users/Amine/Desktop/SDL_OpenGL/lib" -static-libgcc lib/freeglut.dll lib/glew32.dll lib/glew32mx.dll lib/libfreetype-6.dll lib/libjpeg-9.dll lib/libpng16-16.dll lib/libtiff-5.dll lib/libwebp-4.dll lib/SDL2.dll lib/SDL2_image.dll lib/SDL2_ttf.dll lib/zlib1.dll -lopengl32 -lglu32 -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/Amine/Desktop/SDL_OpenGL/include" -I"C:/Users/Amine/Desktop/Projet_Opengl/Vehicule_Simulator/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Users/Amine/Desktop/SDL_OpenGL/include" -I"C:/Users/Amine/Desktop/Projet_Opengl/Vehicule_Simulator/include"
+BIN      = Vehicule_Simulator.exe
+CXXFLAGS = $(CXXINCS) -g3 -std=c++11
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+obj/main.o: src/main.cpp
+	$(CPP) -c src/main.cpp -o obj/main.o $(CXXFLAGS)
+
+obj/Entity.o: src/Entity.cpp
+	$(CPP) -c src/Entity.cpp -o obj/Entity.o $(CXXFLAGS)
+
+obj/Vector.o: src/Vector.cpp
+	$(CPP) -c src/Vector.cpp -o obj/Vector.o $(CXXFLAGS)
+
+obj/Road.o: src/Road.cpp
+	$(CPP) -c src/Road.cpp -o obj/Road.o $(CXXFLAGS)
+
+obj/Vehicule.o: src/Vehicule.cpp
+	$(CPP) -c src/Vehicule.cpp -o obj/Vehicule.o $(CXXFLAGS)
